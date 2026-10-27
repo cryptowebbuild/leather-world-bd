@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Leather World BD | ১০০% অরিজিনাল হ্যান্ডক্রাফটেড লেদার গুডস | ঢাকা</title>
+  
+  <!-- Meta & SEO -->
+  <meta name="description" content="Leather World BD - ১০০% খাঁটি কাউহাইড ফুল-গ্রেইন চামড়ার এক্সিকিউটিভ ল্যাপটপ ব্যাগ, পাসপোর্ট ওয়ালেট, বেল্ট ও জ্যাকেট। ১০K অনুসারীদের বিশ্বস্ত ব্র্যান্ড।">
+  <meta property="og:title" content="Leather World BD | Luxury Handcrafted Leather Goods">
+  <meta property="og:description" content="খাঁটি চামড়ার আভিজাত্য। ০.৩ সেকেন্ডে ১-ক্লিক অর্ডার ও ফ্রি লেজার নেইম এমবসিং।">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=80">
+
+  <!-- Google Fonts: Cinzel + Plus Jakarta Sans + Hind Siliguri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Hind+Siliguri:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (typeof tailwind !== 'undefined') {
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              leatherDark: {
+                950: '#150C07',
+                900: '#23140C',
+                800: '#382014',
+                700: '#4D2D1D',
+                600: '#683D27'
+              },
+              cognac: {
+                600: '#8C4F27',
+                500: '#A96131',
+                400: '#C7753C',
+                100: '#F5EBE1',
+                50: '#FAF6F0'
+              },
+              brassGold: {
+                500: '#C5A059',
+                400: '#D8B673',
+                100: '#FBF7EE'
+              }
+            },
+            fontFamily: {
+              serifHeading: ['"Cinzel"', '"Hind Siliguri"', 'serif'],
+              sans: ['"Plus Jakarta Sans"', '"Hind Siliguri"', 'sans-serif']
+            }
+          }
+        }
+      };
+    }
+  </script>
+
+  <!-- React 18 & Babel CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
+      background-color: #FAF6F0;
+      color: #150C07;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #A96131;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="selection:bg-cognac-500 selection:text-white">
+
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useMemo } = React;
+
+const PRODUCTS = [
+  {
+    id: 1,
+    name: 'দ্য গ্লোবট্রটার মাল্টি-পকেট পাসপোর্ট ও ট্রাভেল ওয়ালেট',
+    code: 'LW-PASS-01',
+    category: 'wallets',
+    price: 1850,
+    originalPrice: 2400,
+    tag: 'অফিশিয়াল হিট • সেপ্টেম্বর ড্রপ',
+    leatherType: '১০০% ফুল-গ্রেইন অয়েল-পুল-আপ কাউহাইড লেদার',
+    features: 'পাসপোর্ট, ৪টি কার্ড স্লট, বোর্ডিং পাস ও ক্যাশ কম্পার্টমেন্ট',
+    dimensions: '7.8" x 4.2" (স্মার্ট স্লিম ট্রাভেলার সাইজ)',
+    image: 'https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80',
+    description: 'এয়ারপোর্ট ট্রাভেল ও আন্তর্জাতিক ভ্রমণের জন্য আল্টিমেট পাসপোর্ট হোল্ডার। প্রিমিয়াম ওয়াক্সড থ্রেডে হ্যান্ড-স্টিচড এবং বয়সের সাথে সাথে চামড়ার গ্লেস দ্বিগুণ হয়।'
+  },
+  {
+    id: 2,
+    name: 'হেরিটেজ ফুল-গ্রেইন লেদার ল্যাপটপ মেসেঞ্জার ব্যাগ',
+    code: 'LW-BAG-EXEC',
+    category: 'bags',
+    price: 7800,
+    originalPrice: 9500,
+    tag: 'এক্সিকিউটিভ চয়েস',
+    leatherType: 'হেভি-ডিউটি বাফেলো ও কাউহাইড ভেজিটেবল ট্যানড লেদার',
+    features: '১৫.৬ ইঞ্চি ল্যাপটপ প্যাডেড চেম্বার, এন্টিক ব্রাস হার্ডওয়্যার',
+    dimensions: '16"W x 12"H x 4"D',
+    image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80',
+    description: 'কর্পোরেট মিটিং, অফিস বা বিজনেসের জন্য চিরন্তন আভিজাত্য। যেকোনো সাধারণ ব্যাগের চেয়ে ১০ গুণ মজবুত।'
+  },
+  {
+    id: 3,
+    name: 'ভিন্টেজ বাইফোল্ড অ্যান্টি-আরএফআইডি লেদার মানিব্যাগ',
+    code: 'LW-WALLET-CLASSIC',
+    category: 'wallets',
+    price: 1450,
+    originalPrice: 1800,
+    tag: 'ডেইলি ক্যারি এসেনশিয়াল',
+    leatherType: 'টপ-গ্রেইন নাপা কাউহাইড লেদার',
+    features: 'RFID ব্লকিং টেকনোলজি, ৮টি কার্ড স্লট, ডুয়াল কারেন্সি পকেট',
+    dimensions: '4.5" x 3.5" (পকেটে পারফেক্ট ফিট)',
+    image: 'https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80',
+    description: 'ডিজিটাল কার্ড চুরি প্রতিরোধক শিল্ড সহ স্লিম ও দীর্ঘস্থায়ী প্রিমিয়াম মানিব্যাগ।'
+  },
+  {
+    id: 4,
+    name: 'আর্মার ফুল-গ্রেইন লেদার ক্লাসিক বাইকার জ্যাকেট',
+    code: 'LW-JACKET-RIDER',
+    category: 'jackets',
+    price: 11500,
+    originalPrice: 14000,
+    tag: 'উইন্টার সিগনেচার',
+    leatherType: 'সফট প্রসেসড ১০০% অরিজিনাল শিপস্কিন ও কাউ লেদার',
+    features: 'YKK মেটাল জিপার, সফট সাটিন ইনার লাইনিং, ৪টি পকেট',
+    dimensions: 'Custom Fit (M, L, XL, XXL)',
+    image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80',
+    description: 'শীতের সেরা স্টাইল স্টেটমেন্ট। প্রটেক্টিভ উইন্ডপ্রুফ ফিনিশ ও আরামদায়ক ফিটিং।'
+  },
+  {
+    id: 5,
+    name: 'রয়্যাল ইতালিয়ান ট্যানড অটো-বাকল লেদার বেল্ট',
+    code: 'LW-BELT-AUTO',
+    category: 'belts',
+    price: 1650,
+    originalPrice: 2100,
+    tag: 'লাইফটাইম গ্যারান্টি',
+    leatherType: 'ওয়ান-পিস সলিড কাট ফুল-গ্রেইন চামড়া',
+    features: 'অ্যান্টি-রাস্ট অ্যালয় বাকল, মাইক্রো-অ্যাডজাস্টেবল ক্লিক লক',
+    dimensions: '32" - 44" অ্যাডজাস্টেবল ওয়েস্ট সাইজ',
+    image: 'https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=800&q=80',
+    description: 'কোনো ফাটা বা প্লাস্টিক পেস্টিং ছাড়া একটানা বছরের পর বছর টেকসই আসল চামড়ার বেল্ট।'
+  },
+  {
+    id: 6,
+    name: 'মিনিমালিস্ট কার্বন-লাইনড ম্যাগনেটিক কার্ডহোল্ডার',
+    code: 'LW-CARD-SLIM',
+    category: 'wallets',
+    price: 950,
+    originalPrice: 1250,
+    tag: 'স্লিম পকেট মাস্টার',
+    leatherType: 'ক্রেজি হর্স ডিস্ট্রেসড লেদার',
+    features: 'ক্যাশ ক্লিপ ম্যাগনেট, ৬টি কুইক কার্ড পুশ স্লট',
+    dimensions: '3.8" x 2.8" (আল্ট্রা লাইট)',
+    image: 'https://images.unsplash.com/photo-1606503829058-294c77c94318?auto=format&fit=crop&w=800&q=80',
+    description: 'পকেটে ভারী মানিব্যাগ না রেখে শুধু প্রয়োজনীয় কার্ড ও ক্যাশ বহনের জন্য পারফেক্ট।'
+  }
+];
+
+function App() {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [activeProduct, setActiveProduct] = useState(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  
+  // Customization Options
+  const [leatherColor, setLeatherColor] = useState('কগনাক ব্রাউন (Vintage Cognac)');
+  const [embossName, setEmbossName] = useState('');
+
+  // Form State
+  const [customerName, setCustomerName] = useState('');
+  const [customerPhone, setCustomerPhone] = useState('');
+  const [customerAddress, setCustomerAddress] = useState('');
+
+  // Real-time browsing indicator
+  const [activeShoppers, setActiveShoppers] = useState(24);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveShoppers(prev => Math.floor(Math.random() * 10) + 18);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  });
+
+  const filteredProducts = useMemo(() => {
+    if (selectedCategory === 'all') return PRODUCTS;
+    return PRODUCTS.filter(p => p.category === selectedCategory);
+  }, [selectedCategory]);
+
+  const openOrderModal = (product) => {
+    setActiveProduct(product);
+    setIsDrawerOpen(true);
+  };
+
+  const handleWhatsAppOrder = (e) => {
+    e.preventDefault();
+    if (!customerName || !customerPhone || !customerAddress) {
+      alert('অনুগ্রহ করে আপনার নাম, মোবাইল নম্বর এবং সম্পূর্ণ ঠিকানা প্রদান করুন');
+      return;
+    }
+
+    const orderId = 'LW-' + Math.floor(100000 + Math.random() * 900000);
+
+    const message = 
+      `*💼 Leather World BD - নতুন অর্ডার রসিদ #${orderId}*\n` +
+      `------------------------------------------\n` +
+      `*প্রোডাক্ট:* ${activeProduct.name}\n` +
+      `*কোড:* ${activeProduct.code}\n` +
+      `*লেদার কালার:* ${leatherColor}\n` +
+      (embossName ? `*ফ্রি নেইম লেজার খোদাই:* "${embossName}"\n` : '') +
+      `*মূল্য:* ৳${activeProduct.price.toLocaleString('en-IN')}\n` +
+      `*কন্ডিশন:* প্রোডাক্ট দেখে ক্যাশ অন ডেলিভারি পরিশোধ\n\n` +
+      `*গ্রাহকের তথ্য:*\n` +
+      `👤 *নাম:* ${customerName}\n` +
+      `📞 *মোবাইল:* ${customerPhone}\n` +
+      `📍 *ঠিকানা:* ${customerAddress}\n` +
+      `------------------------------------------\n` +
+      `*মেসেজ:* আসসালামু আলাইকুম, আমি Leather World এর সাইট থেকে এই ১০০% পিওর লেদার আইটেমটি অর্ডার করতে চাই। দ্রুত কনফার্ম করুন।`;
+
+    const waUrl = `https://wa.me/8801791316938?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, '_blank');
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col bg-[#FAF6F0] text-leatherDark-950 font-sans">
+      
+      {/* 1. TOP OFFICIAL DEMO BANNER & CRYPTOWEBBUILD BACKLINK */}
+      <div className="bg-leatherDark-950 text-cognac-100 text-xs py-2 px-4 border-b border-leatherDark-800">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+          <div className="flex items-center gap-2">
+            <span className="bg-cognac-500 text-white font-bold px-2 py-0.5 rounded text-[10px] tracking-wider uppercase">
+              কনসেপ্ট ডেমো স্টোর
+            </span>
+            <span className="text-stone-300">
+              Leather World BD (১০,০০০ অনুসারী)-এর জন্য ০.৩ সেকেন্ড আল্ট্রা-ফাস্ট ১-ক্লিক অর্ডার পোর্টাল
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="text-stone-400">স্পিড: <strong className="text-emerald-400">০.৩ সেকেন্ড</strong></span>
+            <span className="text-stone-600">|</span>
+            <a 
+              href="https://cryptowebbuild.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-brassGold-400 hover:text-white font-semibold underline underline-offset-2 transition-colors"
+            >
+              Engineered by CryptoWebBuild ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* 2. MAIN HEADER & BRANDING */}
+      <header className="sticky top-0 z-40 bg-[#FAF6F0]/95 backdrop-blur-md border-b border-cognac-100 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+          
+          {/* Logo & Tagline */}
+          <div className="flex items-center gap-3 sm:gap-4">
+            <div className="w-12 h-12 bg-gradient-to-br from-leatherDark-900 to-cognac-600 text-brassGold-400 flex items-center justify-center rounded-sm shadow-md font-serifHeading text-2xl font-bold tracking-tight border border-brassGold-500/40">
+              LW
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="font-serifHeading text-xl sm:text-2xl font-bold tracking-tight text-leatherDark-950">
+                  Leather <span className="text-cognac-600 font-normal">World BD</span>
+                </h1>
+                <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300">
+                  ✓ ১০K ফলোয়ার্স ভেরিফাইড
+                </span>
+              </div>
+              <p className="text-[11px] sm:text-xs text-stone-500 flex items-center gap-1">
+                <i data-lucide="shield-check" className="w-3.5 h-3.5 text-cognac-600"></i>
+                ১০০% জেনুইন ফুল-গ্রেইন কাউহাইড লেদার • ঢাকা, বাংলাদেশ
+              </p>
+            </div>
+          </div>
+
+          {/* Quick Contact & WhatsApp */}
+          <div className="flex items-center gap-3">
+            <div className="hidden sm:flex flex-col text-right">
+              <span className="text-[11px] text-stone-500 font-medium">হটলাইন ও বাল্ক অর্ডার</span>
+              <a href="tel:01791316938" className="text-sm font-bold text-leatherDark-900 hover:text-cognac-600 transition-colors">
+                ০১৭১৯-১৩১৬৯৩৮
+              </a>
+            </div>
+
+            <a 
+              href="https://wa.me/8801791316938" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-sm shadow transition-all"
+            >
+              <i data-lucide="message-circle" className="w-4 h-4"></i>
+              <span>WhatsApp চ্যাট</span>
+            </a>
+          </div>
+
+        </div>
+      </header>
+
+      {/* 3. HERO SHOWCASE WITH LUXURY CRAFTSMANSHIP */}
+      <section className="relative bg-leatherDark-950 text-white overflow-hidden py-14 sm:py-20">
+        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px]"></div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div className="lg:col-span-7 space-y-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brassGold-500/20 text-brassGold-300 border border-brassGold-500/30 text-xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>ফ্রি পার্সোনালাইজড লেজার নেইম খোদাই অফার চলছে</span>
+              </div>
+
+              <h2 className="font-serifHeading text-3xl sm:text-5xl font-normal leading-tight text-white">
+                খাঁটি চামড়ার স্থায়িত্বে <br/>
+                <span className="text-brassGold-400 italic">অভিজাত প্রফেশনাল</span> লাইফস্টাইল
+              </h2>
+
+              <p className="text-stone-300 text-xs sm:text-sm max-w-xl leading-relaxed">
+                কোনো ফেক রেক্সিন বা পিইউ লেদার নয়—লেদার ওয়ার্ল্ড বিডির প্রতিটি ব্যাগ, ওয়ালেট ও বেল্ট প্রস্তুত হয় শতভাগ অরিজিনাল সিজনড কাউহাইড লেদারে। ইনবক্স জ্যাম ছাড়া ১-ক্লিকেই অর্ডার করুন।
+              </p>
+
+              {/* Guarantees */}
+              <div className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-stone-300 border-t border-leatherDark-800">
+                <div className="flex items-center gap-1.5">
+                  <i data-lucide="award" className="w-4 h-4 text-brassGold-400"></i>
+                  <span>লাইফটাইম স্টিচিং গ্যারান্টি</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <i data-lucide="truck" className="w-4 h-4 text-cognac-400"></i>
+                  <span>সারা দেশে ক্যাশ অন ডেলিভারি</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-emerald-400 font-medium">
+                  <i data-lucide="eye" className="w-4 h-4"></i>
+                  <span>বর্তমানে {activeShoppers} জন লাইভ দেখছেন</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Featured Product Hero Card */}
+            <div className="lg:col-span-5">
+              <div className="relative bg-leatherDark-900 rounded-sm p-4 border border-brassGold-500/30 shadow-2xl">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-sm mb-3">
+                  <img 
+                    src={PRODUCTS[0].image} 
+                    alt={PRODUCTS[0].name}
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                  />
+                  <span className="absolute top-3 left-3 bg-cognac-600 text-white font-bold text-[10px] px-2.5 py-1 rounded-sm uppercase tracking-wider">
+                    হট কালেকশন • ট্রাভেলার্স চয়েস
+                  </span>
+                </div>
+                <div className="space-y-1.5">
+                  <div className="flex justify-between items-baseline">
+                    <h3 className="font-serifHeading text-lg font-bold text-white">
+                      {PRODUCTS[0].name}
+                    </h3>
+                    <span className="text-brassGold-400 font-bold text-lg">৳১,৮৫০</span>
+                  </div>
+                  <p className="text-xs text-stone-400">
+                    {PRODUCTS[0].features}
+                  </p>
+                  <button 
+                    onClick={() => openOrderModal(PRODUCTS[0])}
+                    className="w-full mt-2.5 bg-gradient-to-r from-cognac-500 to-amber-700 hover:from-cognac-600 hover:to-amber-800 text-white font-bold text-xs py-3 rounded-sm shadow-lg transition-all flex items-center justify-center gap-2"
+                  >
+                    <i data-lucide="zap" className="w-4 h-4"></i>
+                    <span>১-ক্লিকে কাস্টম খোদাই সহ WhatsApp অর্ডার</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 4. FILTER TABS */}
+      <section className="bg-white border-b border-cognac-100 sticky top-20 z-30 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
+            
+            <button 
+              onClick={() => setSelectedCategory('all')}
+              className={`px-4 py-2 rounded-sm text-xs font-semibold whitespace-nowrap transition-all ${
+                selectedCategory === 'all' 
+                  ? 'bg-leatherDark-900 text-brassGold-400 shadow font-bold' 
+                  : 'bg-cognac-50 text-leatherDark-900 hover:bg-cognac-100'
+              }`}
+            >
+              সব লেদার কালেকশন ({PRODUCTS.length})
+            </button>
+
+            <button 
+              onClick={() => setSelectedCategory('wallets')}
+              className={`px-4 py-2 rounded-sm text-xs font-semibold whitespace-nowrap transition-all ${
+                selectedCategory === 'wallets' 
+                  ? 'bg-leatherDark-900 text-brassGold-400 shadow font-bold' 
+                  : 'bg-cognac-50 text-leatherDark-900 hover:bg-cognac-100'
+              }`}
+            >
+              পাসপোর্ট ও কার্ড ওয়ালেট
+            </button>
+
+            <button 
+              onClick={() => setSelectedCategory('bags')}
+              className={`px-4 py-2 rounded-sm text-xs font-semibold whitespace-nowrap transition-all ${
+                selectedCategory === 'bags' 
+                  ? 'bg-leatherDark-900 text-brassGold-400 shadow font-bold' 
+                  : 'bg-cognac-50 text-leatherDark-900 hover:bg-cognac-100'
+              }`}
+            >
+              এক্সিকিউটিভ ল্যাপটপ ব্যাগ
+            </button>
+
+            <button 
+              onClick={() => setSelectedCategory('belts')}
+              className={`px-4 py-2 rounded-sm text-xs font-semibold whitespace-nowrap transition-all ${
+                selectedCategory === 'belts' 
+                  ? 'bg-leatherDark-900 text-brassGold-400 shadow font-bold' 
+                  : 'bg-cognac-50 text-leatherDark-900 hover:bg-cognac-100'
+              }`}
+            >
+              পিওর লেদার বেল্ট
+            </button>
+
+            <button 
+              onClick={() => setSelectedCategory('jackets')}
+              className={`px-4 py-2 rounded-sm text-xs font-semibold whitespace-nowrap transition-all ${
+                selectedCategory === 'jackets' 
+                  ? 'bg-leatherDark-900 text-brassGold-400 shadow font-bold' 
+                  : 'bg-cognac-50 text-leatherDark-900 hover:bg-cognac-100'
+              }`}
+            >
+              রাইডার ও ক্যাজুয়াল জ্যাকেট
+            </button>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 5. PRODUCT CATALOG */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1">
+        
+        <div className="text-center max-w-2xl mx-auto mb-8 space-y-1.5">
+          <span className="text-xs uppercase tracking-widest text-cognac-600 font-bold">
+            GENUINE LEATHER ARTISANAL WORKSHOP
+          </span>
+          <h2 className="font-serifHeading text-2xl sm:text-3xl font-bold text-leatherDark-950">
+            সময়ের সাথে যার রূপ ও উজ্জ্বলতা বৃদ্ধি পায়
+          </h2>
+          <p className="text-stone-600 text-xs sm:text-sm">
+            হোম ডেলিভারিতে প্রোডাক্ট হাতে পেয়ে চামড়ার কোয়ালিটি যাচাই করে মূল্য পরিশোধ করুন
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {filteredProducts.map(product => (
+            <div 
+              key={product.id}
+              className="bg-white rounded-sm border border-cognac-100 hover:border-brassGold-500 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group overflow-hidden"
+            >
+              {/* Product Image */}
+              <div className="relative aspect-[4/3] bg-stone-100 overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <span className="absolute top-3 left-3 bg-leatherDark-900/90 text-brassGold-400 text-[10px] font-bold px-2.5 py-1 rounded-sm">
+                  {product.tag}
+                </span>
+                <span className="absolute bottom-3 right-3 bg-white/90 text-stone-700 text-[10px] font-medium px-2 py-0.5 rounded-sm">
+                  {product.code}
+                </span>
+              </div>
+
+              {/* Product Body */}
+              <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                <div>
+                  <h3 className="font-serifHeading text-lg font-bold text-leatherDark-950 group-hover:text-cognac-600 transition-colors">
+                    {product.name}
+                  </h3>
+
+                  <div className="mt-2 space-y-1 text-xs text-stone-700 bg-cognac-50 p-2.5 rounded-sm border border-cognac-100">
+                    <p><strong>চামড়ার গ্রেড:</strong> {product.leatherType}</p>
+                    <p><strong>স্পেসিফিকেশন:</strong> {product.features}</p>
+                    <p><strong>সাইজ:</strong> {product.dimensions}</p>
+                  </div>
+
+                  <p className="mt-2.5 text-xs text-stone-500 line-clamp-2">
+                    {product.description}
+                  </p>
+                </div>
+
+                {/* Price & Action */}
+                <div className="pt-3 border-t border-stone-100 flex items-center justify-between">
+                  <div>
+                    <span className="text-xs text-stone-400 line-through mr-1.5">
+                      ৳{product.originalPrice.toLocaleString('en-IN')}
+                    </span>
+                    <span className="text-xl font-bold text-leatherDark-900">
+                      ৳{product.price.toLocaleString('en-IN')}
+                    </span>
+                  </div>
+
+                  <button 
+                    onClick={() => openOrderModal(product)}
+                    className="inline-flex items-center gap-1.5 bg-cognac-600 hover:bg-cognac-700 text-white font-bold text-xs px-3.5 py-2.5 rounded-sm shadow transition-all"
+                  >
+                    <i data-lucide="shopping-bag" className="w-3.5 h-3.5"></i>
+                    <span>১-ক্লিকে অর্ডার</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </main>
+
+      {/* 6. INSTANT 1-CLICK ORDER DRAWER */}
+      {isDrawerOpen && activeProduct && (
+        <div className="fixed inset-0 z-50 overflow-hidden">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
+            onClick={() => setIsDrawerOpen(false)}
+          ></div>
+
+          <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div className="w-screen max-w-md bg-white text-leatherDark-950 shadow-2xl flex flex-col border-l border-cognac-200">
+              
+              {/* Drawer Header */}
+              <div className="p-4 bg-leatherDark-950 text-white flex items-center justify-between border-b border-leatherDark-800">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded bg-brassGold-500 text-leatherDark-950 flex items-center justify-center font-bold">
+                    <i data-lucide="check" className="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <h3 className="font-serifHeading text-base font-bold">১-ক্লিক ক্যাশ অন ডেলিভারি অর্ডার</h3>
+                    <p className="text-[10px] text-brassGold-300">Leather World BD • ০.৩ সেকেন্ডে WhatsApp-এ</p>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setIsDrawerOpen(false)}
+                  className="p-1 rounded text-stone-400 hover:text-white transition-colors"
+                >
+                  <i data-lucide="x" className="w-6 h-6"></i>
+                </button>
+              </div>
+
+              {/* Drawer Body */}
+              <div className="p-5 overflow-y-auto custom-scrollbar flex-1 space-y-4">
+                
+                {/* Product Summary */}
+                <div className="bg-cognac-50 p-3.5 rounded-sm border border-cognac-200 flex gap-3.5">
+                  <img 
+                    src={activeProduct.image} 
+                    alt={activeProduct.name}
+                    className="w-16 h-16 object-cover rounded-sm border border-cognac-200"
+                  />
+                  <div className="flex-1">
+                    <h4 className="font-serifHeading font-bold text-sm leading-snug">
+                      {activeProduct.name}
+                    </h4>
+                    <p className="text-[11px] text-stone-500">{activeProduct.code}</p>
+                    <p className="text-sm font-bold text-cognac-600 mt-1">
+                      ৳{activeProduct.price.toLocaleString('en-IN')}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Color Selector */}
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-stone-700">চামড়ার কালার ফিনিশ:</label>
+                  <select 
+                    value={leatherColor}
+                    onChange={e => setLeatherColor(e.target.value)}
+                    className="w-full text-xs p-2.5 rounded-sm border border-stone-300 bg-stone-50 text-stone-900 focus:outline-none focus:border-cognac-600"
+                  >
+                    <option value="কগনাক ব্রাউন (Vintage Cognac)">কগনাক ব্রাউন (Vintage Cognac)</option>
+                    <option value="ডিপ ডার্ক চকোলেট (Dark Chocolate)">ডিপ ডার্ক চকোলেট (Dark Chocolate)</option>
+                    <option value="জেট ম্যাট ব্ল্যাক (Jet Black)">জেট ম্যাট ব্ল্যাক (Jet Black)</option>
+                    <option value="ট্যান বার্ন ফিনিশ (Hand-Rubbed Tan)">ট্যান বার্ন ফিনিশ (Hand-Rubbed Tan)</option>
+                  </select>
+                </div>
+
+                {/* Free Laser Name Embossing */}
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-stone-700 flex items-center justify-between">
+                    <span>ফ্রি লেজার নেইম খোদাই (ঐচ্ছিক):</span>
+                    <span className="text-[10px] text-emerald-700 font-bold">১০০% ফ্রি অফার</span>
+                  </label>
+                  <input 
+                    type="text"
+                    placeholder="উদা: SAGOR AHMED অথবা ইনিশিয়াল 'SA'"
+                    value={embossName}
+                    onChange={e => setEmbossName(e.target.value)}
+                    className="w-full text-xs p-2.5 rounded-sm border border-stone-300 bg-stone-50 text-stone-900 focus:outline-none focus:border-cognac-600"
+                  />
+                  <p className="text-[10px] text-stone-500">আপনার নাম ওয়ালেট বা ব্যাগের কোণায় প্রফেশনাল লেজারে খোদাই করা হবে।</p>
+                </div>
+
+                {/* Form Fields */}
+                <form onSubmit={handleWhatsAppOrder} className="space-y-3">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone-700 mb-1">
+                      আপনার নাম <span className="text-red-500">*</span>
+                    </label>
+                    <input 
+                      type="text"
+                      required
+                      placeholder="উদা: আসিফ চৌধুরী"
+                      value={customerName}
+                      onChange={e => setCustomerName(e.target.value)}
+                      className="w-full text-xs p-2.5 rounded-sm border border-stone-300 bg-stone-50 text-stone-900 focus:outline-none focus:border-cognac-600"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-stone-700 mb-1">
+                      মোবাইল নম্বর (WhatsApp) <span className="text-red-500">*</span>
+                    </label>
+                    <input 
+                      type="tel"
+                      required
+                      placeholder="01XXXXXXXXX"
+                      value={customerPhone}
+                      onChange={e => setCustomerPhone(e.target.value)}
+                      className="w-full text-xs p-2.5 rounded-sm border border-stone-300 bg-stone-50 text-stone-900 focus:outline-none focus:border-cognac-600"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-stone-700 mb-1">
+                      সম্পূর্ণ ডেলিভারি ঠিকানা <span className="text-red-500">*</span>
+                    </label>
+                    <textarea 
+                      rows="2"
+                      required
+                      placeholder="বাড়ি নম্বর, রোড নম্বর, থানা, জেলা (উদা: গুলশান-১, ঢাকা)"
+                      value={customerAddress}
+                      onChange={e => setCustomerAddress(e.target.value)}
+                      className="w-full text-xs p-2.5 rounded-sm border border-stone-300 bg-stone-50 text-stone-900 focus:outline-none focus:border-cognac-600"
+                    ></textarea>
+                  </div>
+
+                  {/* Submit Button */}
+                  <button 
+                    type="submit"
+                    className="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm py-3.5 px-4 rounded-sm shadow-md transition-all flex items-center justify-center gap-2"
+                  >
+                    <i data-lucide="message-circle" className="w-5 h-5"></i>
+                    <span>সরাসরি WhatsApp-এ অর্ডার কনফার্ম করুন</span>
+                  </button>
+
+                  <div className="bg-amber-50 p-2.5 rounded-sm border border-amber-200 text-center">
+                    <p className="text-[11px] text-amber-900 font-semibold">
+                      🔒 হোম ডেলিভারিতে পণ্য দেখে চামড়ার গুণগত মান যাচাই করে মূল্য পরিশোধ করুন।
+                    </p>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 7. FOOTER WITH CRYPTOWEBBUILD BACKLINK */}
+      <footer className="bg-leatherDark-950 text-stone-400 text-xs border-t border-leatherDark-900 py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            
+            <div className="space-y-2">
+              <div className="font-serifHeading text-xl font-bold text-white">
+                Leather <span className="text-brassGold-400">World BD</span>
+              </div>
+              <p className="text-stone-400 text-xs leading-relaxed">
+                ১০০% খাঁটি কাউহাইড চামড়ায় তৈরি এক্সিকিউটিভ ব্যাগ, ওয়ালেট ও লাইফস্টাইল পণ্য। ১০,০০০+ কাস্টমারের বিশ্বস্ত ঠিকানা।
+              </p>
+            </div>
+
+            <div className="space-y-1.5">
+              <h4 className="text-white font-bold uppercase tracking-wider text-[11px]">ওয়ার্কশপ ও অফিস</h4>
+              <p className="text-stone-400 text-xs">
+                ঢাকা, বাংলাদেশ।<br/>
+                সারা দেশে ক্যাশ অন ডেলিভারি সুবিধা।
+              </p>
+            </div>
+
+            <div className="space-y-1.5">
+              <h4 className="text-white font-bold uppercase tracking-wider text-[11px]">অফিশিয়াল কন্টাক্ট</h4>
+              <p className="text-stone-400 text-xs">
+                WhatsApp: <strong>01791-316938</strong><br/>
+                ফেসবুক: /leatherworldbd
+              </p>
+            </div>
+
+            <div className="space-y-1.5">
+              <h4 className="text-white font-bold uppercase tracking-wider text-[11px]">সিস্টেম স্পিড</h4>
+              <p className="text-stone-400 text-xs">
+                ওয়ার্ডপ্রেসের স্লো প্লাগইন ছাড়া ০.৩ সেকেন্ড আল্ট্রা-লাইটওয়েট ক্যাটালগ ও অর্ডার সিস্টেম।
+              </p>
+            </div>
+
+          </div>
+
+          <div className="pt-6 border-t border-leatherDark-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <p className="text-stone-500">
+              © {new Date().getFullYear()} Leather World BD. কনসেপ্ট ডেমো স্টোর।
+            </p>
+            <div className="flex items-center gap-2">
+              <span className="text-stone-500">ইঞ্জিনিয়ার্ড বাই:</span>
+              <a 
+                href="https://cryptowebbuild.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-brassGold-400 hover:text-white font-semibold underline underline-offset-4 transition-colors"
+              >
+                CryptoWebBuild (Ultra-Fast DTC Systems)
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </footer>
+
+      {/* Floating Instant WhatsApp Button */}
+      <a 
+        href="https://wa.me/8801791316938"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-700 text-white p-3.5 rounded-full shadow-2xl flex items-center gap-2 transition-transform hover:scale-110"
+        title="WhatsApp-এ সরাসরি কথা বলুন"
+      >
+        <i data-lucide="message-circle" className="w-6 h-6"></i>
+        <span className="max-w-0 overflow-hidden whitespace-nowrap hover:max-w-xs transition-all duration-300 text-xs font-bold pl-0 hover:pl-2">
+          সরাসরি চ্যাট
+        </span>
+      </a>
+
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+</body>
+</html>
